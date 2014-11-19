@@ -1,0 +1,7 @@
+
+<h2 style="text-decoration:underline">Listes des Articles du Blog : </h2>
+<ul>
+{% for article in articles %}
+<li>{{ article.titre }} : {{ article.contenu }}</li>
+</ul>
+{%endfor%}

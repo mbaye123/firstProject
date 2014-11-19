@@ -1,0 +1,37 @@
+{# Ce commentaire ne sera pas visible dans la page HTML #}
+{% extends "blog/base.html" %}
+{% block title %} Ma page de Calcul {% endblock %}
+{% block content %}
+<h1>Ma super calculatrice</h1>
+<p>{{ nombre1 }} + {{ nombre2 }}, ca fait <strong> {{ total }} </strong> </br>
+Nous pouvons également calculer la somme dans le template : {{ nombre1|add:nombre2 }}. </p>
+{% if total > 100000  %} Bravo pour la vente, vous etes un bon commercial
+{% elif total == 90000 %} Ca peut aller bonne continuation
+{% else %} Faite un effort dans vos ventes
+{% endif %}
+
+<p>On a donc {{ total }} chev{{ total|pluralize:'al,aux' }} dans l'écurie</p>
+Le couleurs de l'arc-en-ciel sont:
+<ul>
+{% for couleur in couleurs%}
+<li> {{ couleur }}</li>
+{% endfor %}
+</ul>
+
+<p>
+<a href={% url "blog.views.passe" 4212 %}>Anne dépassée</a>
+</p>
+Les vraies couleurs sont : 
+<ul>
+ {% for cle,couleur1 in couleurs1.items %}
+<li style="color:#{{ cle }}">{{ couleur1 }}</li>
+{% endfor %}
+<ul>
+{% endblock %}
+
+{% comment %}
+    Ceci est une page d'exemple. Elle est composée de 3 tableaux :
+    - tableau des ventes
+    - locations
+    - retours en garantie
+{% endcomment %}
